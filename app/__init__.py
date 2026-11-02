@@ -1,0 +1,1 @@
+"""Beyond Sale backend package."""

@@ -1,0 +1,25 @@
+{
+  "consent_text": "This phone records short conversations at the counter so the shop can review what was said and improve. Recording only happens while the RECORD button shows a green light. Paused means the microphone is off. Audio is deleted automatically after it has been transcribed. Do not record anything you would not be comfortable having written down, and tell the person you are talking to that you are recording.",
+  "retention_hours": 0,
+  "heartbeat_gap_seconds": 90,
+  "session_idle_seconds": 900,
+  "chunk_seconds": 30,
+  "silence_threshold_db": -55,
+  "max_chunk_bytes": 8388608,
+  "whisper": {
+    "model": "small",
+    "device": "cpu",
+    "compute_type": "int8",
+    "beam_size": 1,
+    "vad_filter": true
+  },
+  "shops": [
+    {
+      "id": "demo-shop",
+      "name": "Demo Shop",
+      "token": "replace-with-a-long-random-token",
+      "language": "auto",
+      "initial_prompt": "Shop conversation about bikes. Products mentioned: City Cruiser, Trail Pro 2, Beyond Care service plan."
+    }
+  ]
+}

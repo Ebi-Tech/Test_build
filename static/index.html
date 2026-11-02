@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#14161a" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <title>Beyond Sale</title>
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="stylesheet" href="/static/styles.css" />
+    <link rel="icon" href="/static/icon-192.png" />
+    <link rel="apple-touch-icon" href="/static/icon-192.png" />
+  </head>
+  <body data-status="idle">
+    <header class="topbar">
+      <h1>Beyond Sale</h1>
+      <span id="shop-name" class="shop-name"></span>
+    </header>
+
+    <main>
+      <section class="status-card" aria-live="polite">
+        <div class="light idle" id="light" role="img" aria-label="status light"></div>
+        <p class="status-text" id="status-text">ready</p>
+      </section>
+
+      <section id="recorder" class="panel hidden">
+        <div class="timer">
+          <span class="label">chunks sent</span>
+          <span class="value"><span id="uploaded">0</span> · queued <span id="queued">0</span></span>
+        </div>
+
+        <div class="level-meter" aria-hidden="true">
+          <div class="level-bar" id="level"></div>
+        </div>
+
+        <div class="buttons">
+          <button id="start" class="primary" type="button">● Start recording</button>
+          <button id="pause" class="secondary" type="button" disabled>❙❙ Pause</button>
+          <button id="stop" class="ghost" type="button">■ Stop &amp; save</button>
+        </div>
+
+        <label class="toggle">
+          <input id="skip-silent" type="checkbox" checked />
+          Skip silent chunks
+        </label>
+
+        <p class="paused-note" role="status">
+          Paused — the microphone is not recording.
+        </p>
+
+        <p class="hint">
+          Keep this page open and the phone unlocked. Audio is transcribed after you press
+          “Stop &amp; save”; the recording itself is deleted once the transcript exists.
+        </p>
+      </section>
+    </main>
+
+    <!-- First-use consent screen; text comes from the config file via GET /config -->
+    <div id="consent" class="overlay hidden" role="dialog" aria-modal="true" aria-labelledby="consent-title">
+      <div class="card">
+        <h2 id="consent-title">Before you record</h2>
+        <p id="consent-text" class="consent-text"></p>
+        <button id="consent-accept" class="primary" type="button">I understand and consent</button>
+      </div>
+    </div>
+
+    <!-- Shop id + token, stored on this device only -->
+    <form id="setup" class="overlay hidden" role="dialog" aria-modal="true" aria-labelledby="setup-title">
+      <div class="card">
+        <h2 id="setup-title">Connect this phone</h2>
+        <label for="setup-shop">Shop</label>
+        <select id="setup-shop"></select>
+        <label for="setup-token">Shop token</label>
+        <input id="setup-token" type="password" autocomplete="off" placeholder="token from config.json" />
+        <button id="setup-save" class="primary" type="submit">Save</button>
+        <p class="hint">The token is stored in this browser only. Ask the shop owner for it.</p>
+      </div>
+    </form>
+
+    <script type="module" src="/static/app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,11 @@
+# local data: database, audio, temp files, tokens
+data/
+config/config.json
+
+# python
+.venv/
+__pycache__/
+*.pyc
+
+# os
+.DS_Store
